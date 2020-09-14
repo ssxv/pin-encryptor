@@ -1,0 +1,48 @@
+{
+    "name": "pin-encryptor",
+    "version": "0.0.3",
+    "description": "pin encryption tool",
+    "main": "dist/main.js",
+    "scripts": {
+        "build": "rimraf dist && tsc -p tsconfig.build.json",
+        "start": "ts-node -r tsconfig-paths/register src/main.ts",
+        "start:dev": "nodemon",
+        "start:prod": "node dist/main.js",
+        "lint": "tslint -p tsconfig.json -c tslint.json",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:cov": "jest --coverage"
+    },
+    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ssxv/pin-encryptor.git"
+    },
+    "author": "satyendra1529singh@gmail.com",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^24.9.0",
+        "jest": "^25.1.0",
+        "rimraf": "^3.0.0",
+        "ts-jest": "^24.3.0",
+        "ts-node": "^8.6.2",
+        "tsconfig-paths": "^3.9.0",
+        "tslint": "^5.20.1",
+        "typescript": "^3.7.5"
+    },
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "ts"
+        ],
+        "rootDir": "src",
+        "testRegex": ".spec.ts$",
+        "transform": {
+            "^.+\\.(t|j)s$": "ts-jest"
+        },
+        "coverageDirectory": "../coverage",
+        "testEnvironment": "node"
+    },
+    "dependencies": {}
+}
