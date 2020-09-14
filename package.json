@@ -1,6 +1,6 @@
 {
     "name": "pin-encryptor",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "description": "pin encryption tool",
     "main": "dist/main.js",
     "scripts": {
@@ -8,13 +8,19 @@
         "start:win": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
         "lint": "tslint -p tsconfig.json -c tslint.json"
     },
-    "keywords": [],
+    "keywords": [
+        "pin",
+        "encryption",
+        "pin-encryption",
+        "pin-block",
+        "format 0"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/ssxv/pin-encryptor.git"
     },
     "author": "satyendra1529singh@gmail.com",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "rimraf": "^3.0.0",
         "tsc-watch": "^4.2.9",
@@ -22,7 +28,7 @@
         "typescript": "^3.7.5"
     },
     "dependencies": {
-        "@types/node": "^14.10.1",
-        "buffer-xor": "^2.0.2"
+        "@types/node": "14.10.1",
+        "buffer-xor": "2.0.2"
     }
 }
