@@ -1,4 +1,5 @@
 import * as xor from 'buffer-xor';
+import * as crypto from 'crypto';
 import { preparePinBlock, prepareAccountNumberBlock } from './util';
 
 export class PinEncryptor {
@@ -17,5 +18,14 @@ export class PinEncryptor {
         const pinBlockBuffer = Buffer.from(pinBlock, 'hex');
         const accountNumberBlockBuffer = Buffer.from(accountNumberBlock, 'hex');
         return xor(pinBlockBuffer, accountNumberBlockBuffer).toString('hex');
+    }
+
+    static encrypt(secret: string, pinBlock: string): string {
+
+        const key = crypto.scryptSync(secret, 'salt', 24);
+        const iv = Buffer.alloc(32, 0); // Initialization vector
+
+        const cipher = crypto.createCipheriv('aes-192-gcm', key, iv);
+        return cipher.update(pinBlock, 'utf8', 'hex') + cipher.final('hex');
     }
 }
