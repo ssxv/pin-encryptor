@@ -34,3 +34,47 @@ const pinBlock = PinEncryptor.format0('1529', '1231312312');
 const p = PinEncryptor.encrypt('mysecret', pinBlock);
 console.log(p);             // d30eb09b0110a91fd827d1e80ec48436
 ```
+
+## Format 1
+
+This format should be used where no Account number is available. The PIN block is constructed by concatenating the PIN with a transaction number thus:
+
+-   one nibble with the value of 1, which identifies this as a format 1 block
+-   one nibble encoding the length N of the PIN
+-   N nibbles, each encoding one PIN digit
+-   14−N nibbles encoding a unique value, which may be a transaction sequence number, time stamp or random number
+
+```
+import { PinEncryptor } from 'pin-encryptor';
+
+const p = PinEncryptor.format1('1529', '123456789177');
+console.log(p, p.length);   // 1415291234567891 16
+```
+
+## Format 2
+
+Format 2 is for local use with off-line systems only, e.g. smart cards. The PIN block is constructed by concatenating the PIN with a filler value thus:
+
+-   one nibble with the value of 2, which identifies this as a format 2 block
+-   one nibble encoding the length N of the PIN
+-   N nibbles, each encoding one PIN digit
+-   14−N nibbles, each holding the "fill" value 15 (i.e. 11112)
+    (Except for the format value in the first nibble, this is identical to the plain text PIN field of format 0.)
+
+```
+import { PinEncryptor } from 'pin-encryptor';
+
+const p = PinEncryptor.format2('1529');
+console.log(p, p.length);   // 241529FFFFFFFFFF 16
+```
+
+## Format 3
+
+Format 3 is the same as format 0, except that the "fill" digits are random values from 10 to 15, and the first nibble (which identifies the block format) has the value 3.
+
+```
+import { PinEncryptor } from 'pin-encryptor';
+
+const p = PinEncryptor.format3('1529');
+console.log(p, p.length);   // 341529DFBADABBFC 16
+```
