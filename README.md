@@ -1,5 +1,9 @@
 # [pin-encryptor](https://www.npmjs.com/package/pin-encryptor)
 
+## npm
+
+`npm i pin-encryptor`
+
 https://en.wikipedia.org/wiki/ISO_9564
 
 To protect the PIN during transmission from the PIN entry device to the verifier, the standard requires that the PIN be encrypted, and specifies several formats that may be used.
@@ -27,12 +31,6 @@ import { PinEncryptor } from 'pin-encryptor';
 
 const p = PinEncryptor.format0('1529', '123456789177');
 console.log(p, p.length);   // 041528dcba9876e8 16
-```
-
-```
-const pinBlock = PinEncryptor.format0('1529', '1231312312');
-const p = PinEncryptor.encrypt('mysecret', pinBlock);
-console.log(p);             // d30eb09b0110a91fd827d1e80ec48436
 ```
 
 ## Format 1
@@ -78,3 +76,5 @@ import { PinEncryptor } from 'pin-encryptor';
 const p = PinEncryptor.format3('1529');
 console.log(p, p.length);   // 341529DFBADABBFC 16
 ```
+
+https://wesomething.com/

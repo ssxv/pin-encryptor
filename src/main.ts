@@ -1,5 +1,4 @@
 import * as xor from 'buffer-xor';
-import * as crypto from 'crypto';
 import { preparePinBlockFormat0, prepareAccountNumberBlock, preparePinBlockFormat1, preparePinBlockFormat2, preparePinBlockFormat3 } from './util';
 
 export class PinEncryptor {
@@ -40,11 +39,5 @@ export class PinEncryptor {
     static format3(pin: string): string {
         const pinBlock = preparePinBlockFormat3(pin);
         return pinBlock;
-    }
-
-    static encrypt(secret: string, pinBlock: string): string {
-        const iv = crypto.randomBytes(16); // Initialization vector
-        const cipher = crypto.createCipheriv('aes-192-gcm', secret, iv);
-        return cipher.update(pinBlock, 'utf8', 'hex') + cipher.final('hex');
     }
 }
