@@ -16,15 +16,15 @@ The PIN block is constructed by XOR-ing two 64-bit fields: the plain text PIN fi
 
 The plain text PIN field is:
 
--   one nibble with the value of 0, which identifies this as a format 0 block
--   one nibble encoding the length N of the PIN
--   N nibbles, each encoding one PIN digit
--   14−N nibbles, each holding the "fill" value 15 (i.e. 11112)
+- one nibble with the value of 0, which identifies this as a format 0 block
+- one nibble encoding the length N of the PIN
+- N nibbles, each encoding one PIN digit
+- 14−N nibbles, each holding the "fill" value 15 (i.e. 11112)
 
 The account number field is:
 
--   four nibbles with the value of zero
--   12 nibbles containing the right-most 12 digits of the primary account number (PAN), excluding the check digit
+- four nibbles with the value of zero
+- 12 nibbles containing the right-most 12 digits of the primary account number (PAN), excluding the check digit
 
 ```
 import { PinEncryptor } from 'pin-encryptor';
@@ -37,10 +37,10 @@ console.log(p, p.length);   // 041528dcba9876e8 16
 
 This format should be used where no Account number is available. The PIN block is constructed by concatenating the PIN with a transaction number thus:
 
--   one nibble with the value of 1, which identifies this as a format 1 block
--   one nibble encoding the length N of the PIN
--   N nibbles, each encoding one PIN digit
--   14−N nibbles encoding a unique value, which may be a transaction sequence number, time stamp or random number
+- one nibble with the value of 1, which identifies this as a format 1 block
+- one nibble encoding the length N of the PIN
+- N nibbles, each encoding one PIN digit
+- 14−N nibbles encoding a unique value, which may be a transaction sequence number, time stamp or random number
 
 ```
 import { PinEncryptor } from 'pin-encryptor';
@@ -53,11 +53,11 @@ console.log(p, p.length);   // 1415291234567891 16
 
 Format 2 is for local use with off-line systems only, e.g. smart cards. The PIN block is constructed by concatenating the PIN with a filler value thus:
 
--   one nibble with the value of 2, which identifies this as a format 2 block
--   one nibble encoding the length N of the PIN
--   N nibbles, each encoding one PIN digit
--   14−N nibbles, each holding the "fill" value 15 (i.e. 11112)
-    (Except for the format value in the first nibble, this is identical to the plain text PIN field of format 0.)
+- one nibble with the value of 2, which identifies this as a format 2 block
+- one nibble encoding the length N of the PIN
+- N nibbles, each encoding one PIN digit
+- 14−N nibbles, each holding the "fill" value 15 (i.e. 11112)
+  (Except for the format value in the first nibble, this is identical to the plain text PIN field of format 0.)
 
 ```
 import { PinEncryptor } from 'pin-encryptor';
@@ -76,5 +76,3 @@ import { PinEncryptor } from 'pin-encryptor';
 const p = PinEncryptor.format3('1529');
 console.log(p, p.length);   // 341529DFBADABBFC 16
 ```
-
-https://wesomething.com/
