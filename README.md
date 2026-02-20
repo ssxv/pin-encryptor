@@ -1,5 +1,6 @@
 # [pin-encryptor](https://www.npmjs.com/package/pin-encryptor)
 
+[![codecov](https://codecov.io/gh/ssxv/pin-encryptor/branch/main/graph/badge.svg)](https://codecov.io/gh/ssxv/pin-encryptor)
 [![npm version](https://badge.fury.io/js/pin-encryptor.svg)](https://badge.fury.io/js/pin-encryptor)
 [![npm downloads](https://img.shields.io/npm/dm/pin-encryptor.svg)](https://www.npmjs.com/package/pin-encryptor)
 [![license](https://img.shields.io/npm/l/pin-encryptor.svg)](https://github.com/ssxv/pin-encryptor/blob/main/LICENSE)
